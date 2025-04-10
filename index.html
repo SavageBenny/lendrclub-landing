@@ -25,29 +25,35 @@
       background-size: cover;
     }
     header {
-      padding: 60px 20px 20px;
+      padding: 80px 20px 40px;
       text-align: center;
       background: linear-gradient(145deg, #1c2236, #2e1e48);
       position: relative;
       z-index: 2;
     }
-
     header img {
-      max-width: 350px;
+      max-width: 400px;
+      margin-bottom: 20px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      filter: drop-shadow(0 0 25px rgba(0, 255, 204, 0.5));
+    }
+    header h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: #6fffe9;
       margin-bottom: 20px;
     }
-
     header p {
-      font-size: 1.15rem;
+      font-size: 1.25rem;
       color: #ccc;
       max-width: 600px;
-      margin: 0 auto 10px;
+      margin: 0 auto;
     }
-
     .cta {
-      margin-top: 10px;
+      margin-top: 30px;
     }
-
     .cta a {
       text-decoration: none;
       background: linear-gradient(135deg, #00f2ff, #00ffbd);
@@ -55,49 +61,42 @@
       padding: 16px 32px;
       font-weight: bold;
       border-radius: 12px;
-      font-size: 1rem;
+      font-size: 1.25rem;
       box-shadow: 0 8px 30px rgba(0, 255, 204, 0.4);
       transition: transform 0.2s ease-in-out;
     }
-
     .cta a:hover {
       background: #00bfa5;
     }
-
     section {
       padding: 60px 20px;
       max-width: 1100px;
       margin: 0 auto;
+      background: transparent;
     }
-
     section h2 {
       font-size: 2.5rem;
       color: var(--primary);
       margin-bottom: 20px;
     }
-
     section p, section ul {
       font-size: 1.1rem;
       color: #ddd;
       line-height: 1.6;
     }
-
     ul li {
       margin-bottom: 10px;
     }
-
     ul a {
       color: var(--primary);
       text-decoration: none;
     }
-
     .stats {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 30px;
       margin-top: 40px;
     }
-
     .stat {
       background: linear-gradient(to right, rgba(15,20,30,0.6), rgba(30,40,55,0.6));
       padding: 30px;
@@ -106,17 +105,14 @@
       box-shadow: 0 0 20px rgba(0, 230, 208, 0.1);
       backdrop-filter: blur(10px);
     }
-
     .stat h3 {
       font-size: 2rem;
       color: #6fffe9;
     }
-
     .stat p {
       font-size: 1rem;
       color: #aaa;
     }
-
     footer {
       text-align: center;
       padding: 40px 20px;
@@ -125,30 +121,12 @@
       color: #888;
       border-top: none;
     }
-
-    header::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: radial-gradient(ellipse at center, rgba(50,60,90,0.7) 0%, rgba(30,20,40,0.95) 100%);
-      background-blend-mode: overlay;
-      opacity: 1;
-      z-index: 0;
-    }
-
-    header {
-      position: relative;
-      z-index: 2;
-    }
   </style>
 </head>
 <body>
-
   <header>
     <img src="LendrClub_Logo_old.png" alt="LendrClub Logo" />
+    <h1>LendrClub</h1>
     <p>Decentralized Lending. Backed by Bitcoin. Engineered for Yield and Impact.</p>
     <div class="cta">
       <a href="#">Join the Pre-Sale</a>
@@ -205,6 +183,5 @@
   <footer>
     &copy; 2025 LendrClub. All rights reserved. | contact@lendrclub.com
   </footer>
-
 </body>
 </html>
