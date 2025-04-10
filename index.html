@@ -5,131 +5,147 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LendrClub – Bitcoin-Backed Lending</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary: #6fffe9;
-      --dark: #0c0f1a;
-      --light: #ffffff;
-      --accent: #5d9cec;
-    }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(145deg, #0c0f1a, #1a1f2b 40%, #2b2343);
-      color: var(--light);
-      background-attachment: fixed;
-      background-size: cover;
-    }
-    header {
-      padding: 80px 20px 40px;
-      text-align: center;
-      background: linear-gradient(145deg, #1a2238, #2c1f49);
-      position: relative;
-      z-index: 2;
-    }
-    header h1 {
-      font-size: 3rem;
-      font-weight: 700;
-      color: #6fffe9;
-      margin-bottom: 20px;
-    }
-    header p {
-      font-size: 1.15rem;
-      color: #ccc;
-      max-width: 600px;
-      margin: 0 auto 20px;
-    }
-    .cta {
-      margin-top: 20px;
-    }
-    .cta a {
-      text-decoration: none;
-      background: linear-gradient(135deg, #00f2ff, #00ffbd);
-      color: #000;
-      padding: 16px 32px;
-      font-weight: bold;
-      border-radius: 12px;
-      font-size: 1rem;
-      box-shadow: 0 8px 30px rgba(0, 255, 204, 0.4);
-      transition: transform 0.2s ease-in-out;
-    }
-    .cta a:hover {
-      background: #00bfa5;
-    }
-    section {
-      padding: 60px 20px;
-      max-width: 1100px;
-      margin: 0 auto;
-      background: transparent;
-    }
-    section h2 {
-      font-size: 2.5rem;
-      color: var(--primary);
-      margin-bottom: 20px;
-    }
-    section p, section ul {
-      font-size: 1.1rem;
-      color: #ddd;
-      line-height: 1.6;
-    }
-    ul li {
-      margin-bottom: 10px;
-    }
-    ul a {
-      color: var(--primary);
-      text-decoration: none;
-    }
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
-    }
-    .stat {
-      background: linear-gradient(to right, rgba(15,20,30,0.6), rgba(30,40,55,0.6));
-      padding: 30px;
-      border-radius: 12px;
-      text-align: center;
-      box-shadow: 0 0 20px rgba(0, 230, 208, 0.1);
-      backdrop-filter: blur(10px);
-    }
-    .stat h3 {
-      font-size: 2rem;
-      color: #6fffe9;
-    }
-    .stat p {
-      font-size: 1rem;
-      color: #aaa;
-    }
-    footer {
-      text-align: center;
-      padding: 40px 20px;
-      background: transparent;
-      font-size: 0.9rem;
-      color: #888;
-      border-top: none;
-    }
-    header::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(135deg, rgba(50,50,100,0.6), rgba(30,20,40,0.8));
-      background-blend-mode: overlay;
-      opacity: 1;
-      z-index: 0;
-    }
-    header {
-      position: relative;
-      z-index: 2;
-    }
-  </style>
+<style>
+  :root {
+    --primary: #6fffe9;
+    --dark: #0c0f1a;
+    --light: #ffffff;
+    --accent: #5d9cec;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(145deg, #0c0f1a, #1a1f2b 40%, #2b2343); /* Gradient background */
+    background-attachment: fixed;
+    background-size: cover;
+    color: var(--light);
+  }
+
+  header {
+    padding: 80px 20px 40px;
+    text-align: center;
+    background: linear-gradient(145deg, #1a2238, #2c1f49); /* Header gradient */
+    position: relative;
+    z-index: 2;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at center, rgba(50,60,90,0.7) 0%, rgba(30,20,40,0.95) 100%);
+    background-blend-mode: overlay;
+    opacity: 1;
+    z-index: 0;
+  }
+
+  header h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #6fffe9;
+    margin-bottom: 20px;
+  }
+
+  header p {
+    font-size: 1.15rem;
+    color: #ccc;
+    max-width: 600px;
+    margin: 0 auto 20px;
+  }
+
+  .cta {
+    margin-top: 20px;
+  }
+
+  .cta a {
+    text-decoration: none;
+    background: linear-gradient(135deg, #00f2ff, #00ffbd);
+    color: #000;
+    padding: 16px 32px;
+    font-weight: bold;
+    border-radius: 12px;
+    font-size: 1rem;
+    box-shadow: 0 8px 30px rgba(0, 255, 204, 0.4);
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .cta a:hover {
+    background: #00bfa5;
+  }
+
+  section {
+    padding: 60px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+    background: transparent;
+  }
+
+  section h2 {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+  }
+
+  section p, section ul {
+    font-size: 1.1rem;
+    color: #ddd;
+    line-height: 1.6;
+  }
+
+  ul li {
+    margin-bottom: 10px;
+  }
+
+  ul a {
+    color: var(--primary);
+    text-decoration: none;
+  }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+  }
+
+  .stat {
+    background: linear-gradient(to right, rgba(15,20,30,0.6), rgba(30,40,55,0.6));
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 230, 208, 0.1);
+    backdrop-filter: blur(10px);
+  }
+
+  .stat h3 {
+    font-size: 2rem;
+    color: #6fffe9;
+  }
+
+  .stat p {
+    font-size: 1rem;
+    color: #aaa;
+  }
+
+  footer {
+    text-align: center;
+    padding: 40px 20px;
+    background: transparent;
+    font-size: 0.9rem;
+    color: #888;
+    border-top: none;
+  }
+</style>
+
 </head>
 <body>
   <header>
