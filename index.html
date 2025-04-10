@@ -1,105 +1,179 @@
 <!DOCTYPE html>
-<html lang="="en">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LendrClub – Bitcoin-Backed Lending</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: #0f0f0f;
-      color: #fff;
+    :root {
+      --primary: #ffd600;
+      --dark: #0f0f0f;
+      --light: #ffffff;
+      --accent: #ffe94d;
     }
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 60px 20px;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to right, #0f0f0f, #111418);
+      color: var(--light);
     }
     header {
+      padding: 100px 20px 40px;
       text-align: center;
-      margin-bottom: 60px;
+      background: linear-gradient(135deg, #1b1b1b, #0f0f0f);
+      border-bottom: 1px solid #222;
+    }
+    header img {
+      max-width: 140px;
+      margin-bottom: 20px;
     }
     header h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 20px;
     }
     header p {
       font-size: 1.25rem;
       color: #ccc;
+      max-width: 600px;
+      margin: 0 auto;
     }
     .cta {
-      display: flex;
-      justify-content: center;
       margin-top: 40px;
     }
     .cta a {
       text-decoration: none;
-      background: #ffd600;
-      color: #000;
-      padding: 14px 28px;
+      background: var(--primary);
+      color: var(--dark);
+      padding: 16px 32px;
       font-weight: bold;
-      border-radius: 6px;
+      border-radius: 8px;
+      font-size: 1rem;
+      box-shadow: 0 5px 15px rgba(255, 214, 0, 0.3);
       transition: background 0.3s;
     }
     .cta a:hover {
-      background: #ffe94d;
+      background: var(--accent);
     }
     section {
-      margin-bottom: 80px;
+      padding: 80px 20px;
+      max-width: 1100px;
+      margin: 0 auto;
     }
-    h2 {
-      font-size: 2rem;
+    section h2 {
+      font-size: 2.5rem;
+      color: var(--primary);
       margin-bottom: 20px;
     }
-    ul {
-      padding-left: 20px;
+    section p, section ul {
+      font-size: 1.1rem;
+      color: #ddd;
+      line-height: 1.6;
+    }
+    ul li {
+      margin-bottom: 10px;
+    }
+    ul a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    .stat {
+      background: #1c1c1c;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(255, 214, 0, 0.1);
+    }
+    .stat h3 {
+      font-size: 2rem;
+      color: var(--primary);
+    }
+    .stat p {
+      font-size: 1rem;
+      color: #aaa;
     }
     footer {
       text-align: center;
-      padding: 40px;
-      border-top: 1px solid #333;
+      padding: 40px 20px;
+      background: #0c0c0c;
       font-size: 0.9rem;
       color: #777;
+      border-top: 1px solid #222;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>LendrClub</h1>
-      <p>Bitcoin-Backed Lending. Decentralized. Fractional. Real Yield.</p>
-      <div class="cta">
-        <a href="#">Join the Pre-Sale</a>
+  <header>
+    <img src="LendrClub_Logo.png" alt="LendrClub Logo" />
+    <h1>LendrClub</h1>
+    <p>Decentralized Lending. Backed by Bitcoin. Engineered for Yield and Impact.</p>
+    <div class="cta">
+      <a href="#">Join the Pre-Sale</a>
+    </div>
+  </header>
+
+  <section>
+    <h2>What is LendrClub?</h2>
+    <p>LendrClub is a decentralized protocol that enables peer-to-peer lending backed by real Bitcoin reserves. Through our BTCx token, users can lend, borrow, and earn—all without intermediaries. Designed for transparency, accessibility, and impact.</p>
+  </section>
+
+  <section>
+    <h2>Live Stats</h2>
+    <div class="stats">
+      <div class="stat">
+        <h3>$8.2M+</h3>
+        <p>Total Value Locked</p>
       </div>
-    </header>
+      <div class="stat">
+        <h3>6,780</h3>
+        <p>Loans Funded</p>
+      </div>
+      <div class="stat">
+        <h3>1,420</h3>
+        <p>Active Lenders</p>
+      </div>
+      <div class="stat">
+        <h3>$217K+</h3>
+        <p>Yield Distributed</p>
+      </div>
+      <div class="stat">
+        <h3>152.8 BTC</h3>
+        <p>Collateral Locked</p>
+      </div>
+    </div>
+  </section>
 
-    <section>
-      <h2>What is LendrClub?</h2>
-      <p>LendrClub is a decentralized protocol that enables peer-to-peer lending backed by real Bitcoin reserves. Through our BTCx token, users can lend, borrow, and earn—all without intermediaries.</p>
-    </section>
+  <section>
+    <h2>Key Features</h2>
+    <ul>
+      <li>Fractionalized Loans with Risk Mitigation</li>
+      <li>BTC-Backed Yield with Real Returns</li>
+      <li>Tiered Access Based on Token Holdings</li>
+      <li>DAO Governance and Transparent Operations</li>
+      <li>Bank-Ready API and White-Label Integrations</li>
+    </ul>
+  </section>
 
-    <section>
-      <h2>Key Features</h2>
-      <ul>
-        <li>Fractionalized Loans with Risk Mitigation</li>
-        <li>BTC-Backed Yield with Real Returns</li>
-        <li>Tiered Access Based on Token Holdings</li>
-        <li>DAO Governance and Transparent Operations</li>
-        <li>Bank-Ready API and White-Label Integrations</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Get Involved</h2>
-      <ul>
-        <li><a href="https://savagebenny.github.io/lendrclub-landing/LendrClub_Whitepaper.pdf" style="color: #ffd600;" target="_blank">Read the Whitepaper</a></li>
-        <li><a href="#" style="color: #ffd600;">Join the DAO</a></li>
-        <li><a href="#" style="color: #ffd600;">Apply for the Beta</a></li>
-      </ul>
-    </section>
-  </div>
+  <section>
+    <h2>Get Involved</h2>
+    <ul>
+      <li><a href="https://savagebenny.github.io/lendrclub-landing/LendrClub_Whitepaper.pdf" target="_blank">Read the Whitepaper</a></li>
+      <li><a href="#">Join the DAO</a></li>
+      <li><a href="#">Apply for the Beta</a></li>
+    </ul>
+  </section>
 
   <footer>
     &copy; 2025 LendrClub. All rights reserved. | contact@lendrclub.com
