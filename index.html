@@ -31,13 +31,7 @@
       position: relative;
       z-index: 2;
     }
-    header img {
-      max-width: 360px;
-      margin-bottom: 30px;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
+    
     header h1 {
       font-size: 3rem;
       font-weight: 700;
@@ -48,7 +42,7 @@
       font-size: 1.15rem;
       color: #ccc;
       max-width: 600px;
-      margin: 0 auto 20px;
+      margin: 0 auto 10px;
     }
     .cta {
       margin-top: 10px;
@@ -127,9 +121,9 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(145deg, rgba(45,30,80,0.4), rgba(20,30,60,0.6)), url('https://www.transparenttextures.com/patterns/cubes.png');
+    background: radial-gradient(ellipse at center, rgba(50,60,90,0.7) 0%, rgba(30,20,40,0.95) 100%);
     background-blend-mode: overlay;
-    opacity: 0.85;
+    opacity: 1;
     z-index: 0;
   }
 
@@ -141,7 +135,7 @@
 </head>
 <body>
   <header>
-    <img src="LendrClub_Logo.png" alt="LendrClub Logo" style="max-width: 680px; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto;" />
+    <img src="LendrClub_Logo.png" alt="LendrClub Logo" style="max-width: 640px; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto; filter: drop-shadow(0 0 25px rgba(0, 255, 204, 0.5));" />
     <p>Decentralized Lending. Backed by Bitcoin. Engineered for Yield and Impact.</p>
     <div class="cta">
       <a href="#">Join the Pre-Sale</a>
