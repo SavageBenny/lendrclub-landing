@@ -1,0 +1,1 @@
+This folder will include project docs like whitepaper, pitch deck, and tokenomics.
