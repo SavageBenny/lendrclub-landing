@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Buy LendR Token</title>
+  <title>Buy LENDR Token</title>
   <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
   <style>
     body {
@@ -20,8 +20,8 @@
     .container {
       background: #1c1f2b;
       padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(0, 255, 204, 0.2);
+      border-radius: 12px;
+      box-shadow: 0 0 30px rgba(0, 255, 204, 0.2);
       text-align: center;
       width: 90%;
       max-width: 400px;
@@ -48,6 +48,7 @@
     }
     .message {
       margin-top: 15px;
+      font-size: 0.9rem;
     }
   </style>
 </head>
@@ -55,11 +56,14 @@
   <div class="container">
     <h2>Buy $LENDR Token</h2>
     <p>Not available to U.S. residents.</p>
+
     <input type="number" id="amount" placeholder="Amount in USDC" />
     <p id="calculatedAmount">You will receive: 0 LENDR</p>
+
     <button onclick="connectWallet()">Connect Wallet</button>
     <button onclick="buyTokens()">Buy Now</button>
     <button onclick="addToken()">Add $LENDR to Wallet</button>
+
     <p class="message" id="message"></p>
   </div>
 
@@ -67,92 +71,75 @@
     let web3;
     let userAccount;
 
-    const usdcAddress = '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606EB48'; // USDC on Ethereum
-    const saleWallet = '0xEcdA5B749300523A7A2FFA3fe6062E2A607b2F07'; // Gnosis Safe Treasury
-    const lendrTokenAddress = '0xA0561a15661f4961ccDE4f855Bb28677B6c0bCeb';
+    const usdcAddress = '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606EB48'; // USDC mainnet
+    const saleWallet = '0xEcdA5B749300523A7A2FFA3fe6062E2A607b2F07'; // Your treasury
+    const lendrTokenAddress = '0xA0561a15661f4961ccDE4f855Bb28677B6c0bCeb'; // LENDR token
     const usdcABI = [
       {
-        "constant": false,
-        "inputs": [
-          {"name": "_spender", "type": "address"},
-          {"name": "_value", "type": "uint256"}
+        constant: false,
+        inputs: [
+          { name: "_spender", type: "address" },
+          { name: "_value", type: "uint256" }
         ],
-        "name": "approve",
-        "outputs": [{"name": "", "type": "bool"}],
-        "type": "function"
+        name: "approve",
+        outputs: [{ name: "", type: "bool" }],
+        type: "function"
       },
       {
-        "constant": false,
-        "inputs": [
-          {"name": "_to", "type": "address"},
-          {"name": "_value", "type": "uint256"}
+        constant: false,
+        inputs: [
+          { name: "_to", type: "address" },
+          { name: "_value", type: "uint256" }
         ],
-        "name": "transfer",
-        "outputs": [{"name": "", "type": "bool"}],
-        "type": "function"
+        name: "transfer",
+        outputs: [{ name: "", type: "bool" }],
+        type: "function"
       }
     ];
 
+    // Connect wallet
     async function connectWallet() {
-  try {
-    if (typeof window.ethereum === 'undefined') {
-      alert('MetaMask is not installed. Please install it to use this site.');
-      return;
-    }
-
-    const provider = window.ethereum;
-    web3 = new Web3(provider);
-
-    const accounts = await provider.request({ method: 'eth_requestAccounts' });
-    if (accounts.length > 0) {
-      userAccount = accounts[0];
-      document.getElementById('message').innerText = `Connected: ${userAccount}`;
-    } else {
-      document.getElementById('message').innerText = 'No wallet accounts found.';
-    }
-  } catch (error) {
-    console.error('Wallet connection failed:', error);
-    if (error.code === 4001) {
-      document.getElementById('message').innerText = 'User rejected connection request.';
-    } else {
-      document.getElementById('message').innerText = 'Wallet connection failed.';
-    }
-  }
-});
-          userAccount = accounts[0];
-          document.getElementById('message').innerText = `Connected: ${userAccount}`;
-        } catch (error) {
-          console.error('Wallet connection failed:', error);
-          document.getElementById('message').innerText = 'Wallet connection was rejected or failed.';
+      try {
+        if (typeof window.ethereum === 'undefined') {
+          alert('MetaMask not detected. Please install MetaMask.');
+          return;
         }
-      } else {
-        alert('MetaMask not detected. Please install MetaMask to use this feature.');
+        web3 = new Web3(window.ethereum);
+        const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+        userAccount = accounts[0];
+        document.getElementById('message').innerText = `Connected: ${userAccount}`;
+      } catch (err) {
+        console.error(err);
+        document.getElementById('message').innerText = 'Connection failed.';
       }
     }
 
+    // Preview token amount
     document.getElementById('amount').addEventListener('input', function () {
-      const amount = parseFloat(this.value);
       const rate = 10; // 1 USDC = 10 LENDR
+      const amount = parseFloat(this.value);
       const tokens = isNaN(amount) ? 0 : amount * rate;
       document.getElementById('calculatedAmount').innerText = `You will receive: ${tokens} LENDR`;
     });
 
+    // Buy tokens
     async function buyTokens() {
       const amount = document.getElementById('amount').value;
-      if (!amount || !userAccount) return alert('Enter amount and connect wallet first');
+      if (!userAccount || !amount) return alert('Enter amount and connect wallet.');
 
-      const usdcContract = new web3.eth.Contract(usdcABI, usdcAddress);
-      const amountInWei = web3.utils.toWei(amount, 'mwei'); // USDC uses 6 decimals
+      const contract = new web3.eth.Contract(usdcABI, usdcAddress);
+      const amountInUSDC = web3.utils.toWei(amount, 'mwei'); // USDC = 6 decimals
 
       try {
-        const tx = await usdcContract.methods.transfer(saleWallet, amountInWei).send({ from: userAccount });
-        document.getElementById('message').innerText = 'USDC sent successfully. You will receive your LENDR tokens shortly.';
+        await contract.methods.transfer(saleWallet, amountInUSDC).send({ from: userAccount });
+        document.getElementById('message').innerText = 'Success! Tokens will be distributed soon.';
       } catch (err) {
         console.error(err);
         document.getElementById('message').innerText = 'Transaction failed.';
       }
     }
 
+    // Add token to wallet
     async function addToken() {
       try {
         const wasAdded = await ethereum.request({
@@ -163,19 +150,17 @@
               address: lendrTokenAddress,
               symbol: 'LENDR',
               decimals: 18,
-              image: 'https://www.lendrclub.com/logo.png' // Replace with your real logo URL
-            },
-          },
+              image: 'https://www.lendrclub.com/logo.png'
+            }
+          }
         });
 
-        if (wasAdded) {
-          document.getElementById('message').innerText = 'LENDR token added to your wallet!';
-        } else {
-          document.getElementById('message').innerText = 'Token add request was dismissed.';
-        }
+        document.getElementById('message').innerText = wasAdded
+          ? 'LENDR token added to wallet.'
+          : 'User dismissed token add.';
       } catch (error) {
-        document.getElementById('message').innerText = 'Failed to add token.';
         console.error(error);
+        document.getElementById('message').innerText = 'Error adding token.';
       }
     }
   </script>
