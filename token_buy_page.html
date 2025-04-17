@@ -94,10 +94,31 @@
     ];
 
     async function connectWallet() {
-      if (typeof window.ethereum !== 'undefined') {
-        try {
-          web3 = new Web3(window.ethereum);
-          const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+  try {
+    if (typeof window.ethereum === 'undefined') {
+      alert('MetaMask is not installed. Please install it to use this site.');
+      return;
+    }
+
+    const provider = window.ethereum;
+    web3 = new Web3(provider);
+
+    const accounts = await provider.request({ method: 'eth_requestAccounts' });
+    if (accounts.length > 0) {
+      userAccount = accounts[0];
+      document.getElementById('message').innerText = `Connected: ${userAccount}`;
+    } else {
+      document.getElementById('message').innerText = 'No wallet accounts found.';
+    }
+  } catch (error) {
+    console.error('Wallet connection failed:', error);
+    if (error.code === 4001) {
+      document.getElementById('message').innerText = 'User rejected connection request.';
+    } else {
+      document.getElementById('message').innerText = 'Wallet connection failed.';
+    }
+  }
+});
           userAccount = accounts[0];
           document.getElementById('message').innerText = `Connected: ${userAccount}`;
         } catch (error) {
