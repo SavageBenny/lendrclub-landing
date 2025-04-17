@@ -69,6 +69,7 @@
 
     const usdcAddress = '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606EB48'; // USDC on Ethereum
     const saleWallet = '0xEcdA5B749300523A7A2FFA3fe6062E2A607b2F07'; // Gnosis Safe Treasury
+    const lendrTokenAddress = '0xA0561a15661f4961ccDE4f855Bb28677B6c0bCeb';
     const usdcABI = [
       {
         "constant": false,
@@ -93,17 +94,18 @@
     ];
 
     async function connectWallet() {
-      if (window.ethereum) {
-        web3 = new Web3(window.ethereum);
+      if (typeof window.ethereum !== 'undefined') {
         try {
-          const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+          web3 = new Web3(window.ethereum);
+          const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
           userAccount = accounts[0];
           document.getElementById('message').innerText = `Connected: ${userAccount}`;
-        } catch (err) {
-          document.getElementById('message').innerText = 'Wallet connection failed.';
+        } catch (error) {
+          console.error('Wallet connection failed:', error);
+          document.getElementById('message').innerText = 'Wallet connection was rejected or failed.';
         }
       } else {
-        alert('MetaMask not detected');
+        alert('MetaMask not detected. Please install MetaMask to use this feature.');
       }
     }
 
@@ -125,6 +127,7 @@
         const tx = await usdcContract.methods.transfer(saleWallet, amountInWei).send({ from: userAccount });
         document.getElementById('message').innerText = 'USDC sent successfully. You will receive your LENDR tokens shortly.';
       } catch (err) {
+        console.error(err);
         document.getElementById('message').innerText = 'Transaction failed.';
       }
     }
@@ -136,10 +139,10 @@
           params: {
             type: 'ERC20',
             options: {
-              address: '0xA0561a15661f4961ccDE4f855Bb28677B6c0bCeb',
+              address: lendrTokenAddress,
               symbol: 'LENDR',
               decimals: 18,
-              image: 'https://www.lendrclub.com/logo.png' // Replace with real logo URL
+              image: 'https://www.lendrclub.com/logo.png' // Replace with your real logo URL
             },
           },
         });
