@@ -59,6 +59,7 @@
     <p id="calculatedAmount">You will receive: 0 LENDR</p>
     <button onclick="connectWallet()">Connect Wallet</button>
     <button onclick="buyTokens()">Buy Now</button>
+    <button onclick="addToken()">Add $LENDR to Wallet</button>
     <p class="message" id="message"></p>
   </div>
 
@@ -125,6 +126,32 @@
         document.getElementById('message').innerText = 'USDC sent successfully. You will receive your LENDR tokens shortly.';
       } catch (err) {
         document.getElementById('message').innerText = 'Transaction failed.';
+      }
+    }
+
+    async function addToken() {
+      try {
+        const wasAdded = await ethereum.request({
+          method: 'wallet_watchAsset',
+          params: {
+            type: 'ERC20',
+            options: {
+              address: '0xA0561a15661f4961ccDE4f855Bb28677B6c0bCeb',
+              symbol: 'LENDR',
+              decimals: 18,
+              image: 'https://www.lendrclub.com/logo.png' // Replace with real logo URL
+            },
+          },
+        });
+
+        if (wasAdded) {
+          document.getElementById('message').innerText = 'LENDR token added to your wallet!';
+        } else {
+          document.getElementById('message').innerText = 'Token add request was dismissed.';
+        }
+      } catch (error) {
+        document.getElementById('message').innerText = 'Failed to add token.';
+        console.error(error);
       }
     }
   </script>
