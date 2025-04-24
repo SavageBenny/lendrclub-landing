@@ -1,105 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LendrClub Pitch Deck</title>
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      overflow-x: hidden;
+      background: linear-gradient(135deg, #0c0f1a, #1a1f2b);
+      color: white;
     }
     .slide {
-      height: 100vh;
+      min-height: 100vh;
       padding: 60px 40px;
+      box-sizing: border-box;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      color: white;
+      background-size: cover;
+      background-position: center;
     }
-    .slide h1, .slide h2 {
-      font-size: 2.5rem;
+    h1, h2 {
+      color: #00B4FF;
       margin-bottom: 20px;
     }
-    .slide p {
+    p {
       max-width: 800px;
-      font-size: 1.25rem;
+      font-size: 1.1rem;
       line-height: 1.6;
     }
-    .slide img.logo {
+    .logo {
       max-width: 300px;
       margin-bottom: 20px;
     }
-    .title-slide {
-      background: linear-gradient(135deg, #00B4FF, #1e1f33);
+    .slide:nth-child(odd) {
+      background-color: #1a1f2b;
     }
-    .problem-slide {
-      background: linear-gradient(135deg, #8e0e00, #1f1c18);
+    .slide:nth-child(even) {
+      background-color: #141824;
     }
-    .solution-slide {
-      background: linear-gradient(135deg, #00c853, #1b5e20);
-    }
-    .distribution-slide {
-      background: linear-gradient(135deg, #3f51b5, #1a237e);
-    }
-    .tech-slide {
-      background: linear-gradient(135deg, #00bfa5, #004d40);
-    }
-    .audience-slide {
-      background: linear-gradient(135deg, #3949ab, #0d47a1);
-    }
-    .budget-slide {
-      background: linear-gradient(135deg, #f57c00, #e65100);
-    }
-    .final-slide {
-      background: linear-gradient(135deg, #311b92, #1a237e);
+    .bg-img {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      opacity: 0.1;
     }
   </style>
 </head>
 <body>
-  <div class="slide title-slide">
+  <div class="slide">
     <img src="LendrClub_Logo2.png" alt="LendrClub Logo" class="logo">
     <h1>LendrClub Pitch Deck</h1>
     <p>Decentralized lending. Backed by Bitcoin. Engineered for yield and fairness.</p>
   </div>
-
-  <div class="slide problem-slide">
-    <h2>🚨 The Problem</h2>
-    <p>Predatory lending and limited credit access globally. High-interest rates, opaque processes, and financial exclusion dominate the space.</p>
+  <div class="slide">
+    <h2>Problem</h2>
+    <p>Traditional lending is centralized and predatory. Crypto lending is fragmented, lacks transparency, and excludes most BTC holders from true financial empowerment.</p>
   </div>
-
-  <div class="slide solution-slide">
-    <h2>✅ The Solution</h2>
-    <p>BTC-backed DeFi loans via micro-fractionalized lending. No middlemen. Transparent, efficient, and accessible through smart contracts.</p>
+  <div class="slide">
+    <h2>Solution</h2>
+    <p>LendR enables BTC-backed DeFi loans with fractionalized loan shares, competitive interest rates, and dynamic lender ratings. Permissionless, efficient, and fair.</p>
   </div>
-
-  <div class="slide distribution-slide">
-    <h2>🌐 Distribution Strategy</h2>
-    <p>Web UI for retail users, DAO onboarding for community-led governance, and white-label API for fintech integrations.</p>
+  <div class="slide">
+    <h2>Product Features</h2>
+    <p>- Real BTC collateral<br>
+       - Tradable, fractionalized loan shares<br>
+       - Transparent yield metrics<br>
+       - Smart contract automation<br>
+       - Dynamic risk scoring for lenders<br>
+       - Market-driven interest rates</p>
   </div>
-
-  <div class="slide tech-slide">
-    <h2>🔧 Technical Strategy</h2>
-    <p>Solidity smart contracts, Chainlink price oracles, deployed on Polygon PoS. Future CDK integrations. Fully EVM-compatible and gas-optimized.</p>
+  <div class="slide">
+    <h2>Token Utility</h2>
+    <p>- Stake to earn protocol fees<br>
+       - Discounted borrowing fees<br>
+       - Access premium lending tiers<br>
+       - Participate in DAO governance<br>
+       - Token burn mechanisms</p>
   </div>
-
-  <div class="slide audience-slide">
-    <h2>🎯 Target Audience</h2>
-    <p>Crypto-native users, underbanked borrowers, fintech platforms, DAO treasuries, and micro-lenders seeking sustainable, real-yield opportunities.</p>
+  <div class="slide">
+    <h2>Market Opportunity</h2>
+    <p>$50B+ crypto lending market by 2027. Underbanked populations + DeFi adoption curve = massive untapped growth potential.</p>
   </div>
-
-  <div class="slide budget-slide">
-    <h2>💸 Milestone & Budget</h2>
-    <p>$250K to support development, audits, community building, liquidity, and white-label partner launches.</p>
+  <div class="slide">
+    <h2>Roadmap</h2>
+    <p>Q2: MVP Launch<br>
+       Q3: Pre-Sale + Smart Contract Audits<br>
+       Q4: DAO Launch & Exchange Listing<br>
+       Q1 2026: Chain Bridge & Liquidity Pools<br>
+       Q2 2026: Global Expansion</p>
   </div>
-
-  <div class="slide final-slide">
-    <h2>🤝 Let’s Build Something Better</h2>
-    <p>LendrClub isn't another yield farm. It's a credit system with ethics and engineering. Powered by Bitcoin, optimized for Polygon.</p>
-    <p>📬 contact@lendrclub.com | 🌐 lendrclub.com</p>
+  <div class="slide">
+    <h2>Tokenomics</h2>
+    <p>1B Total Supply<br>
+       25% Community Growth<br>
+       20% Founders (Vested)<br>
+       10% Treasury<br>
+       10% Pre-sale<br>
+       10% ICO<br>
+       5% Liquidity</p>
+  </div>
+  <div class="slide">
+    <h2>Our Ask</h2>
+    <p>Raising $2.5M pre-sale to finish development, complete audits, and supercharge community growth + incentives.</p>
+  </div>
+  <div class="slide">
+    <h2>Contact</h2>
+    <p>Email: contact@lendrclub.com<br>
+       Website: www.lendrclub.com<br>
+       DAO: Coming Soon</p>
   </div>
 </body>
 </html>
